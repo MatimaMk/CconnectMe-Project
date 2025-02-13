@@ -1,0 +1,114 @@
+* {
+
+    font-family: inherit;
+}
+
+body {
+
+    background-image: url('../../assets/images/back-image.jpg');
+    background-size: 50% 50vh;
+    background-repeat: repeat-y;
+    background-attachment: fixed;
+    position: fixed;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.sign-form {
+
+    margin: 30px 900px;
+
+
+}
+
+.sign-text {
+
+    margin-left: 900px;
+}
+
+.sign-text h2 {
+    margin-left: 280px !important;
+    margin-bottom: 80px;
+    font-size: 40px;
+    color: #feb900;
+    font-weight: bold;
+
+}
+
+.sign-text h3 {
+
+    margin: 0;
+    font-size: 25px;
+    font-weight: 80px;
+    color: blue;
+
+}
+
+.sign-text p {
+    margin-top: 0 !important;
+    color: grey;
+
+}
+
+
+#email,
+#username,
+#pwd {
+
+    height: 35px;
+    width: 300px;
+    border-radius: 10px;
+    font-size: 14px;
+    border-spacing: 20px;
+    border-color: grey;
+
+}
+
+.link-p p {
+
+    margin-left: 980px;
+
+
+}
+
+.link-p a {
+
+    text-decoration: none;
+    color: blue;
+
+}
+
+label {
+
+    display: block;
+    margin-top: 15px;
+    color: grey;
+    font-size: 18px;
+    font-weight: bolder;
+
+
+}
+
+input {
+    margin-top: 5px;
+
+
+}
+
+
+#sign-button {
+
+    background-color: #feb900;
+
+    border-radius: 16px;
+    cursor: pointer;
+    height: 50px;
+    width: 150px;
+    color: blue;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 80px;
+    border-color: white;
+
+}
