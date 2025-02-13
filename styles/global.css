@@ -1,0 +1,94 @@
+body {
+
+  background-image: url('../assets/images/back-image.jpg');
+  background-size: cover;
+  opacity: 80%;
+  background-attachment: fixed;
+  
+
+
+
+}
+
+.land-message h2 {
+
+  color: white;
+  margin: 250px 250px 1px;
+  text-align: justify;
+  font-size: 42px;
+  font-weight: 700;
+  position: relative;
+  z-index: -1;
+
+}
+
+.land-message p {
+  color: #feb900;
+  margin-left: 25%;
+  margin-right: 25%;
+  text-align: justify;
+  font-size: 30px;
+  font-weight: 550;
+  position: relative;
+  z-index: -1;
+
+
+}
+
+#connText {
+
+  color: #feb900;
+  font-weight: 700;
+  font-size: 40px;
+
+}
+
+.land-login {
+  background-color: #feb900;
+  border-radius: 16px;
+  cursor: pointer;
+  border-color: white;
+  height: 50px;
+  width: 150px;
+  margin-left: 35%;
+
+}
+
+.land-signup {
+  background-color: #feb900;
+  text-align: center;
+  border-radius: 16px;
+  cursor: pointer;
+  border-color: white;
+  height: 50px;
+  width: 150px;
+  margin-left: 3%;
+  margin-top: 40px;
+
+
+}
+
+.land-login:hover {
+  background-color: white;
+  color: #feb900;
+  border-color: #feb900;
+
+}
+
+.land-signup:hover {
+  background-color: white;
+  color: #feb900;
+  border-color: #feb900;
+}
+
+.land-buttons a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+
+}
+
+.land-buttons:hover a {
+  color: #feb900;
+
+}
