@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>connectMe</title>
+
+    <link href="../styles/pages/login.css" rel="stylesheet">
+    <script src="../scripts/login.js"></script>
+
+</head>
+
+<body>
+    <section class="login-page">
+        <div class="login-image"></div>
+
+
+
+        <div class="login-form-container">
+            <div class="login-text">
+
+                <h2><strong> connectMe</strong></h2>
+                <h3>LOGIN</h3>
+                <p>Welcome! Login to connect with others.</p>
+
+            </div>
+            <form class="login-form" id="login-form">
+
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="enter username" required><br>
+
+                <label for="pwd">Password:</label>
+                <input type="password" id="pwd" name="pwd" placeholder="xxxxxx" required><br><br>
+
+                <input type="submit" onclick="login()" id="login-button" value="LOGIN">
+
+            </form>
+
+
+            <div class="link-p">
+                <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>
