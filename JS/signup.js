@@ -5,6 +5,8 @@ function signUp() {
     const password = document.getElementById("pwd").value.trim();
 
     if (email && username && password && password) {
+
+        // create user object with the details
         let signObj = {
 
             email: email,
@@ -12,9 +14,11 @@ function signUp() {
             password: password
 
         }
+
+        // store to the local storage
         let signJSON = JSON.stringify(signObj);
         localStorage.setItem(username,signJSON );
-        alert("sucessfully logged in");s
+        alert("sucessfully logged in");
 
         
     } else if (email === localStorage.getItem(email)) { 
