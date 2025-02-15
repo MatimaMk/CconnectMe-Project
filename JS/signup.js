@@ -10,7 +10,8 @@ function signUp() {
         username: username,
         password: password
       }
-
+ 
+      
         // store to the local storage
       let signJSON = JSON.stringify(signObj);
       localStorage.setItem(username, signJSON);
