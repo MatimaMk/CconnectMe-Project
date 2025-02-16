@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>connectMe</title>
+  
+    <link rel="stylesheet" href="../styles/pages/chatbox.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+</head>
+
+<body>
+
+    <div class="yellow-layer">
+        <h1 id="user-name"></h1>
+    </div>
+
+    <div class="chatbox">
+        <div class="chat-messages">
+            <ul id="messages"></ul>
+        </div>
+
+        <div class="chat-input">
+            <input type="text" id="message-input" placeholder="Type a message...">
+
+            <button id="send-button">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+
+            <span id="typing-status"></span>
+
+        </div>
+    </div>
+</body>
+
+<script src="../JS/chat.js"></script>
+</html>
