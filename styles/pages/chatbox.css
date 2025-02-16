@@ -1,0 +1,134 @@
+
+* {
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.yellow-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #feb900;
+  text-align: center;
+  padding: 20px;
+  z-index: 1;
+}
+
+.yellow-layer h1 {
+  font-size: 36px;
+}
+
+.chatbox {
+  position: absolute;
+  top: 100px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 100px);
+  background-color: #fff;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.chat-messages {
+  padding: 20px;
+  overflow-y: auto;
+  height: 85% ;
+}
+
+#messages {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#messages li {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  width: 60%;
+  word-wrap: break-word;
+  min-height: 40px;
+  }
+  
+  #messages li.you {
+
+  background-color: #feb900;
+  float: right;
+  margin-right: 20px;
+  }
+  
+  #messages li.friend {
+  background-color: #f0f0f0;
+  float: left;
+  margin-left: 20px;
+  }
+  
+  #messages li span {
+  display: block;
+  margin-bottom: 5px;
+  }
+  
+  #messages li span:first-child {
+  font-weight: bold;
+  }
+  
+  #messages li span:last-child {
+  font-size: 12px;
+  color: #666;
+  }
+  
+.chat-input {
+
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 95%;
+  background-color: #f0f0f0;
+  padding: 10px;
+  border: 1px solid #feb900;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: height 0.3s ease-in-out;
+  
+}
+
+.chat-input:focus-within {
+  height: 100px;
+}
+
+#message-input {
+  width: 80%;
+  height: 40px;
+  padding: 10px;
+  border: 1px solid #feb900;
+  border-radius: 10px;
+  font-size: 18px;
+  transition: height 0.3s ease-in-out;
+ 
+  
+}
+
+#message-input:focus {
+  height: 80px;
+ 
+}
+
+#typing-status {
+  font-size: 14px;
+  color: #666;
+}
+#send-button {
+
+  background-color: #feb900;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
