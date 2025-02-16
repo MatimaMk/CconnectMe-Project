@@ -1,26 +1,34 @@
 function login() {
+  const loginUsername = document.getElementById("username").value.trim();
+  const loginPassword = document.getElementById("pwd").value.trim();
 
-    const loginUsername = document.getElementById("username").value.trim();
-    const loginPassword = document.getElementById("pwd").value.trim();
+  if (!loginUsername || !loginPassword) {
+    alert("Please enter both username and password");
+    return;
+  }
 
-    if (username && password) {
+  const storedUser = localStorage.getItem(loginUsername);
+  if (storedUser) {
 
-        const storedUser = localStorage.getItem(username);
+    const user = JSON.parse(storedUser);
+    if (user.password === loginPassword) {
 
-        if (storedUser) {
+      window.location.href = "UserList.html";
+      alert("Login successful!");
+      localStorage.setItem('currUser', loginUsername);
+     
+     
 
-            const storedUserJSON = JSON.parse(storedUser);
+    } else {
 
-            if (storedUserJSON.password === loginPassword) {
-
-                alert("Login successful!");
-                window.location.href = 'Pages\UserList.html';
-
-            } else {
-                
-                alert("Incorrect details. please enter correct Details");
-            }
-        }
-
+      alert("Incorrect password. Please try again");
+    
     }
+
+  } else {
+
+    alert("User not found. Please register first");
+   
+  }
 }
+
