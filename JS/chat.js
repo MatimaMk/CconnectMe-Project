@@ -10,6 +10,7 @@
     let friendName = localStorage.getItem('friendName');
     let typingTimeout = null;
 
+
     userNameElement.textContent = userName;
 
     if (localStorage.getItem('messages')) {

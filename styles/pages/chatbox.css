@@ -93,6 +93,7 @@
   justify-content: space-between;
   align-items: center;
   transition: height 0.3s ease-in-out;
+  
 }
 
 .chat-input:focus-within {
