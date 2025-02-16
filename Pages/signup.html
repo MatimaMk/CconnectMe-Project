@@ -1,49 +1,50 @@
-<!DOCTYPE html>
+<!DOCTYPE >
 <html lang="en">
 
 <head>
 
     <title>connectMe</title>
     <link href="../styles/pages/sign-up.css" rel="stylesheet">
+    <script src="../JS/signup.js"></script>
 
 </head>
 
-<body>
 
+<body>
     <section class="signup-page">
 
-        <div class="sign-text">
-            <h2><strong> connectMe</strong></h2>
-            <h3>SIGN UP</h3>
-            <p>Welcome! signup to connect with others.</p>
+        <div class="signup-image"></div>
 
-        </div>
+        <div class="signup-form-container">
 
-        <div>
-            <form class="sign-form" action="#" method="post">
+            <div class="signup-text">
+                <h2><strong> connectMe</strong></h2>
+                <h3>SIGN-UP</h3>
+                <p>Welcome! Signup to connect with others.</p>
+            </div>
+
+            <form class="signup-form" id="signup-form">
 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="enter email" required> <br>
+                <input type="email" id="email" name="email" placeholder="enter email" required>
 
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" placeholder="enter username" minlength="3" required>
-                <br>
 
                 <label for="pwd">Password:</label>
-                <input type="password" id="pwd" name="pwd" minlength="6" placeholder="xxxxxx" required><br><br>
+                <input type="password" id="pwd" name="pwd" placeholder="xxxxxx" minlength="6" required>
 
-                <input type="submit" id="sign-button" value="SIGN UP">
 
+                <input type="submit" onclick="signUp()" id="signup-button" value="SIGN-UP">
             </form>
-        </div>
 
+            <div class="link-p">
+                <p>Already have an account? <a href="login.html">Login</a></p>
+            </div>
 
-        <div class="link-p">
-            <p>Already signed-up? <a href="#link to login">Login</a></p>
         </div>
 
     </section>
-
 </body>
 
 </html>
