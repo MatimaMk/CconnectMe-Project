@@ -1,78 +1,61 @@
 body {
-
   background-image: url('../assets/images/back-image.jpg');
   background-size: cover;
-  opacity: 80%;
+  background-position: center;
+  opacity: 0.8;
   background-attachment: fixed;
-  
-
-
-
 }
 
 .land-message h2 {
-
   color: white;
-  margin: 250px 250px 1px;
-  text-align: justify;
-  font-size: 42px;
+  margin: 10% 10% 1px;
+  text-align: center;
+  font-size: 40px;
   font-weight: 700;
   position: relative;
   z-index: -1;
-
+  margin-bottom: 30px;
+  padding-top: 40px;
 }
 
 .land-message p {
   color: #feb900;
-  margin-left: 25%;
-  margin-right: 25%;
-  text-align: justify;
+  margin: 0 20%;
+  text-align: center;
   font-size: 30px;
   font-weight: 550;
   position: relative;
   z-index: -1;
-
-
 }
 
 #connText {
-
   color: #feb900;
   font-weight: 700;
-  font-size: 40px;
-
+  font-size: 2rem;
+  margin-bottom: 50px;
 }
 
-.land-login {
-  background-color: #feb900;
-  border-radius: 16px;
-  cursor: pointer;
-  border-color: white;
-  height: 50px;
-  width: 150px;
-  margin-left: 35%;
-
-}
-
-.land-signup {
-  background-color: #feb900;
+.land-buttons {
   text-align: center;
+  margin-top: 40px;
+}
+
+.land-login, .land-signup {
+  display: inline-block;
+  background-color: #feb900;
   border-radius: 16px;
   cursor: pointer;
   border-color: white;
   height: 50px;
   width: 150px;
-  margin-left: 3%;
-  margin-top: 40px;
-
-
+  margin: 0 10px;
 }
+
 
 .land-login:hover {
   background-color: white;
   color: #feb900;
   border-color: #feb900;
-
 }
 
 .land-signup:hover {
@@ -83,12 +66,51 @@ body {
 
 .land-buttons a {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   text-decoration: none;
-
 }
 
-.land-buttons:hover a {
+.land-signup:hover a {
   color: #feb900;
+}
+.land-login:hover a {
+  color: #feb900;
+}
 
+/* Responsive design */
+
+@media only screen and (max-width: 768px) {
+  .land-message h2 {
+    font-size: 2rem;
+  }
+  .land-message p {
+    font-size: 1.2rem;
+  }
+  #connText {
+    font-size: 1.5rem;
+  }
+  .land-login {
+    width: 100px;
+  }
+  .land-signup {
+    width: 100px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .land-message h2 {
+    font-size: 1.8rem;
+  }
+  .land-message p {
+    font-size: 1rem;
+  }
+  #connText {
+    font-size: 1.2rem;
+  }
+  .land-login {
+    width: 80px;
+  }
+  .land-signup {
+    width: 80px;
+  }
 }
