@@ -74,9 +74,13 @@ input {
   padding-right: 30px;
 }
 
-.fa-search {
+.fa-user-circle{
   position: absolute;
-  top: 10px;
-  right: 10px;
-  color: #ccc;
+  top: 60px;
+  right: 250px;
+  color: white;
+  background-color: #feb900;
+ font-size: 96px;
+
+
 }

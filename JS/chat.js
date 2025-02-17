@@ -1,88 +1,92 @@
 
-    const messageInput = document.getElementById('message-input');
-    const sendButton = document.getElementById('send-button');
-    const messagesList = document.getElementById('messages');
-    const userNameElement = document.getElementById('user-name');
-    const typingStatus = document.getElementById('typing-status');
-
-    let messages = [];
-    let userName = localStorage.getItem('username');
-    let friendName = localStorage.getItem('friendName');
-    let typingTimeout = null;
+const messageInput = document.getElementById('message-input');
+const sendButton = document.getElementById('send-button');
+const messagesList = document.getElementById('messages');
+const typingStatus = document.getElementById('typing-status');
+const usernameElement = document.getElementById('username');
 
 
-    userNameElement.textContent = userName;
+let currUser = localStorage.getItem('currUser');
 
-    if (localStorage.getItem('messages')) {
+let receiver = getParameterByName('user');
 
-        messages = JSON.parse(localStorage.getItem('messages'));
-        displayMessages();
-    }
+usernameElement.textContent = receiver;
 
-    sendButton.addEventListener('click', () => {
+// Initialize an empty array to store messages
+let messages = [];
 
-        const message = messageInput.value.trim();
+loadMessages();
 
-        if (message) {
+function getParameterByName(name) {
 
-            const timestamp = new Date().toLocaleTimeString();
+  const url = new URL(window.location.href);
+  const parameter = url.searchParams.get(name);
+  return parameter;
+}
 
-            messages.push({ user: userName, message: message, timestamp: timestamp });
-            localStorage.setItem('messages', JSON.stringify(messages));
-            displayMessages();
-            messageInput.value = '';
+// Function to load messages from local storage
+function loadMessages() {
 
-        }
+  if (localStorage.getItem('messages')) {
+
+    messages = JSON.parse(localStorage.getItem('messages'));
+
+    messages = messages.filter((message) => {
+
+      return (message.user === currUser && message.receiver === receiver) || 
+             (message.user === receiver && message.receiver === currUser);
     });
-
-    messageInput.addEventListener('input', () => {
-
-        if (typingTimeout) {
-
-            clearTimeout(typingTimeout);
-        }
-
-        typingTimeout = setTimeout(() => {
-
-            typingStatus.textContent = '';
-        }, 2000);
-
-        typingStatus.textContent = 'Typing...';
-    });
-
-    messageInput.addEventListener('keypress', (e) => {
-
-        if (e.key === 'Enter') {
-            sendButton.click();
-        }
-    });
-
-    function displayMessages() {
-        messagesList.innerHTML = '';
-
-        messages.forEach((message, index) => {
-
-            const messageElement = document.createElement('LI');
-            if (message.user === userName) {
-
-                messageElement.classList.add('you');
-
-            } else {
-
-                messageElement.classList.add('friend');
-            }
-            const messageText = document.createElement('SPAN');
-            messageText.textContent = `${message.user}: ${message.message}`;
+    displayMessages(messages);
+  }
+}
 
 
-            const timestampText = document.createElement('SPAN');
-            timestampText.style.fontSize = '12px';
-            timestampText.style.color = '#666';
-            timestampText.textContent = message.timestamp;
-            messageElement.appendChild(messageText);
-            messageElement.appendChild(document.createElement('BR'));
-            messageElement.appendChild(timestampText);
-            messagesList.appendChild(messageElement);
-        });
+sendButton.addEventListener('click', () => {
+  sendMessage();
+});
+
+
+function sendMessage() {
+  const messageText = messageInput.value.trim();
+  if (messageText) {
+    const message = {
+      user: currUser,
+      receiver: receiver,
+      text: messageText,
+      timestamp: new Date().toLocaleTimeString()
+    };
+    messages.push(message);
+
+    localStorage.setItem('messages', JSON.stringify(messages));
+
+    displayMessages(messages);
+    messageInput.value = '';
+  }
+}
+
+// Function to display the messages
+function displayMessages(messages) {
+  messagesList.innerHTML = '';
+  messages.forEach((message) => {
+
+    const messageElement = document.createElement('LI');
+    if (message.user === currUser) {
+
+      messageElement.classList.add('you');
+    } else {
+      messageElement.classList.add('friend');
 
     }
+    const messageText = document.createElement('SPAN');
+    messageText.textContent = `${message.user}: ${message.text}`;
+    const timestampText = document.createElement('SPAN');
+    timestampText.textContent = message.timestamp;
+    messageElement.appendChild(messageText);
+    messageElement.appendChild(document.createElement('BR'));
+    messageElement.appendChild(timestampText);
+    messagesList.appendChild(messageElement);
+  });
+}
+
+// Polling to check for new messages 
+setInterval(loadMessages, 1000);
