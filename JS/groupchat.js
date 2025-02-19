@@ -3,97 +3,92 @@ function displayUsers() {
     const users = [];
     // Loop through localStorage to collect all users except the current user
     for (let i = 0; i < localStorage.length; i++) {
-        const username = localStorage.key(i);
-
-        if (username !== "groupChatMessages" && username !== "currUser") {
-            const user = { username: username };
-            users.push(user);
-        }
+      const username = localStorage.key(i);
+      if (username !== "groupChatMessages" && username !== "currUser") {
+        const user = { username: username };
+        users.push(user);
+      }
     }
-
     const userList = document.getElementById("conList");
     userList.innerHTML = '';
-
     if (users.length === 0) {
-        userList.innerHTML = '<li>No users available.</li>';
-        return;
+      userList.innerHTML = '<li>No users available.</li>';
+      return;
     }
-
     // Create list items for each user
     users.forEach((user) => {
-        const listItem = document.createElement("LI");
-        listItem.innerHTML = `<i class="fa fa-user" aria-hidden="true" style="margin-right: 10px;"></i>${user.username}`;
-        userList.appendChild(listItem);
+      const listItem = document.createElement("LI");
+      listItem.innerHTML = `<i class="fa fa-user" aria-hidden="true" style="margin-right: 10px;"></i>${user.username}`;
+      userList.appendChild(listItem);
     });
-}
-
-// Function to display group chat messages
-function displayGroupMessages() {
+  }
+  
+  // Function to display group chat messages
+  function displayGroupMessages() {
     const chatMessages = JSON.parse(localStorage.getItem("groupChatMessages")) || [];
     const chatMessagesList = document.getElementById("chatMessages");
     chatMessagesList.innerHTML = '';
-
     // Check if there are messages
     if (chatMessages.length === 0) {
-        chatMessagesList.innerHTML = '<li>No messages yet. Be the first to send a message!</li>';
-        return;
+      chatMessagesList.innerHTML = '<li>No messages yet. Be the first to send a message!</li>';
+      return;
     }
-
     // Add each message to the chat window
     chatMessages.forEach((message) => {
-        const messageItem = document.createElement("LI");
-        messageItem.innerHTML = `<strong>${message.username}:</strong> ${message.text} <span style="font-size: 10px; color: #ccc;">${message.timestamp}</span>`;
-        chatMessagesList.appendChild(messageItem);
+      const messageItem = document.createElement("LI");
+      messageItem.className = "message-item";
+      const currentUser = localStorage.getItem("currUser") || "Anonymous";
+      if (message.username === currentUser) {
+        messageItem.style.background = "#feb900";
+      } else {
+        messageItem.style.background = "grey";
+      }
+      messageItem.innerHTML = `
+        <div class="message-header">
+          <strong>${message.username}:</strong>
+          <span class="timestamp">${message.timestamp}</span>
+        </div>
+        <div class="message-text">${message.text}</div>
+      `;
+      chatMessagesList.appendChild(messageItem);
     });
-
     // Scroll to the bottom of the chat window after adding new messages
     chatMessagesList.scrollTop = chatMessagesList.scrollHeight;
-}
-
-function sendMessage() {
+  }
+  
+  // Function to send a new message
+  function sendMessage() {
     const messageInput = document.getElementById("message-input");
     const messageText = messageInput.value.trim();
-    
     if (messageText) {
-        
-        const currentUser = localStorage.getItem("currUser") || "Anonymous"; 
-        const newMessage = {
-            username: currentUser,
-            text: messageText,
-            timestamp: new Date().toLocaleTimeString()
-        };
-
-       
-        const chatMessages = JSON.parse(localStorage.getItem("groupChatMessages")) || [];
-        chatMessages.push(newMessage);
-
-        
-        localStorage.setItem("groupChatMessages", JSON.stringify(chatMessages));
-
-     
-        messageInput.value = '';
-
-        // Refresh the chat window to show the new message
-        displayGroupMessages();
+      const currentUser = localStorage.getItem("currUser") || "Anonymous";
+      const newMessage = {
+        username: currentUser,
+        text: messageText,
+        timestamp: new Date().toLocaleTimeString()
+      };
+      const chatMessages = JSON.parse(localStorage.getItem("groupChatMessages")) || [];
+      chatMessages.push(newMessage);
+      localStorage.setItem("groupChatMessages", JSON.stringify(chatMessages));
+      messageInput.value = '';
+      // Refresh the chat window to show the new message
+      displayGroupMessages();
     }
-}
-
-// Function to poll and update group chat messages 
-function pollGroupMessages() {
+  }
+  
+  // Function to poll and update group chat messages
+  function pollGroupMessages() {
     setInterval(displayGroupMessages, 2000);
-}
-
-
-window.addEventListener("load", function () {
+  }
+  
+  // Initialize event listeners and display functions when the page loads
+  window.addEventListener("load", function () {
     const sendButton = document.getElementById("send-button");
-
-    
     if (sendButton) {
-        sendButton.addEventListener("click", sendMessage);
+      sendButton.addEventListener("click", sendMessage);
     }
-
     // Initialize display functions when the page loads
-    displayUsers();  
+    displayUsers();
     displayGroupMessages();
-    pollGroupMessages();  
-});
+    pollGroupMessages();
+  });
