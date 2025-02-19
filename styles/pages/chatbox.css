@@ -14,10 +14,7 @@
   text-align: center;
   padding: 20px;
   z-index: 1;
-  display: flex;
-  align-items: center;
 }
-
 
 .yellow-layer h1 {
   font-size: 36px;
@@ -135,22 +132,3 @@
   font-size: 16px;
 }
 
-#back-icon {
-  font-size: 30px;
-  display: flex;
-  justify-content: flex-start;
-  color: black;
-  text-decoration: none;
-}
-#back-icon a, i {
-  text-decoration: none;
-}
-
-#username {
-  margin-left: auto;
-  margin-right: auto;
-  flex-grow: 1;
-  text-align: center;
-}
-
-  
