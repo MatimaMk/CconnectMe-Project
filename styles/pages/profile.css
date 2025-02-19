@@ -123,31 +123,3 @@ color: grey !important;
     border: none;
     padding: 10px;
   }
-  .my-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    background-color: #fff;
-    border-bottom: 1px solid #ccc;
-    }
-    
-    .header-left {
-    display: flex;
-    align-items: center;
-    margin-bottom: 700px;
-    }
-    
-    .header-right {
-    display: flex;
-    justify-content: flex-end;
-    }
-    
-    .logout-button {
-    background-color: #feb900;
-    color: black;
-    border: none;
-    
-    font-size: 20px;
-    cursor: pointer;
-    }

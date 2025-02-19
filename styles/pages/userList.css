@@ -46,9 +46,6 @@ ul li:hover {
 
 .header h2 {
   margin: 5PX;
-  text-align: center;
- 
-  
 
 }
 
@@ -81,9 +78,9 @@ input {
   position: absolute;
   top: 60px;
   right: 250px;
-  color: black;
+  color: white;
   background-color: #feb900;
- font-size: 80px;
+ font-size: 96px;
 
 
 }
@@ -92,24 +89,8 @@ a {
 
   text-decoration: none;
   color: black;
-  font-size: 35px;
+  font-size: 28px;
   
+
 
   }
-
-  #back-icon {
-    font-size: 40px;
-    display: flex;
-    justify-content: flex-start;
-  }
-  #contacts-header {
-    color: black;
-    text-align: center;
-    margin-top: 60px;
-  } 
-
-
-
-
-  
-  
