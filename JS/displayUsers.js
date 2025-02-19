@@ -1,46 +1,50 @@
+
 function displayUsers() {
   const users = [];
   for (let i = 0; i < localStorage.length; i++) {
-    const username = localStorage.key(i);
-    // Check if it's not the current user
-    if (username !== "currUser") {
-      const user = JSON.parse(localStorage.getItem(username));
-      if (user && user.username) {
-        users.push(user);  // Add user if the data is valid
+    const userData = localStorage.getItem(localStorage.key(i));
+    try {
+      const parsedData = JSON.parse(userData);
+      if (parsedData.username && parsedData.username !== localStorage.getItem("currUser")) {
+        users.push(parsedData.username);
       }
+    } catch (error) {
+      console.log("Error parsing user data:", error.message);
     }
   }
-
   const userList = document.getElementById("conList");
   if (userList) {
-    userList.innerHTML = '';  // Clear the list before appending new items
+    userList.innerHTML = '';
 
+    // Clear the list before appending new items
     if (users.length === 0) {
-      userList.innerHTML = '<p>No users available</p>'; // Display if no users are found
+      userList.innerHTML = '<p>No users available</p>';
+    
+
     } else {
+
       users.forEach((user) => {
         const listItem = document.createElement("LI");
-        listItem.innerHTML = `<i class="fa fa-user" aria-hidden="true" style="margin-right: 10px;"></i>${user.username}`;
-        listItem.dataset.username = user.username;
-        
+        listItem.innerHTML = `<i class="fa fa-user" aria-hidden="true" style="margin-right: 10px;"></i>${user}`;
+        listItem.dataset.username = user;
         // Add event listener to each list item to start private chat
-        listItem.addEventListener("click", () => startPrivateChat(user.username));
-
+        listItem.addEventListener("click", () => startPrivateChat(user));
         userList.appendChild(listItem);
       });
     }
   } else {
-    console.error('The user list element with ID "conList" is not found in the HTML.');
+    console.log('The user list element with ID "conList" is not found in the HTML.');
   }
 }
 
 function startPrivateChat(username) {
   // Check if currUser exists in localStorage
+
   const currUser = localStorage.getItem("currUser");
   if (currUser) {
     window.location.href = `chatbox.html?user=${username}&currUser=${currUser}`;
   } else {
-    console.error('Current user not found in localStorage.');
+    console.log('Current user not found in localStorage.');
   }
 }
 
